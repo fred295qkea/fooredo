@@ -1,10 +1,12 @@
+import Frontpage from "@/components/Frontpage";
+import Header from "@/components/Header";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <main>
-      <h1>Orbitron does work?</h1>
-      <p>orbitron virker totalt meget hihi</p>
+    <main className="h-screen">
+      <Header />
+      <Frontpage />
     </main>
   );
 }
