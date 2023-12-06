@@ -38,3 +38,11 @@ export default function Program({ bands }) {
     </div>
   );
 }
+
+// Figure out how to use the schedule endpoint to add additional information to the list
+
+// http://localhost:8080/schedule
+
+// evt spørg jonas
+// Kunne være en ide at basere list-view på "schedule"-API'en og så bruge den "bands"-API'en til singleview, men så er der ikke adgang til genre :////
+// deffo spørg jonas

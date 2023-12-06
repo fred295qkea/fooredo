@@ -1,28 +1,35 @@
 //Bandcomponent.jsx
 
 function getRandomCountry() {
-  const countries = ["DA", "US", "UK", "SE", "GE"];
-  const randomIndex = Math.floor(Math.random() * countries.length);
-  return countries[randomIndex];
+  const countries = ["DK", "US", "UK", "SE", "JP", "NO"];
+  const countriesIndex = Math.floor(Math.random() * countries.length);
+  return countries[countriesIndex];
 }
+// This is overflødigt since we have access to a schedule that we can fetch via API
+// function getRandomStage() {
+//   const stages = ["Saturn", "Neptun", "Merkur", "Mars", "Julescenen"];
+//   const stagesIndex = Math.floor(Math.random() * stages.length);
+//   return stages[stagesIndex];
+// }
 
 export default function Bandcomponent({ data }) {
   const randomCountry = getRandomCountry();
+  const randomStage = getRandomStage();
   //   console.log(randomCountry);
   //   console.log(data.genre);
 
   return (
     <div className="p-2 bg-blue-200">
-      <p></p>
       <p>
         {data.name} - {randomCountry}
       </p>
       <p>{data.genre}</p>
+      <p>Scene: {randomStage}</p>
       <span class="material-icons icon">favorite_border</span>
     </div>
   );
 }
 
-// Overvej at lave samme procedure med lande som med dage på ugen de spiller
+// Overvej at lave samme procedure med lande som med dage på ugen de spiller - Hvor skal det scopes?
+
 // Find ud af hvordan du laver favorites? Skal der bruges state - nok, men i så fald hvor skal den state ligge? component scoped eller page scoped? Kan vel ikke være page scoped, hvis at vi SKAL hente dataen ned på en "server-side page"
-// Samme problematik med at bruge state til genrevalg, det skal vel foregå i map-funktionen på page, og så skal den bare bygge et nyt array, med kun den genre. hmmm.
