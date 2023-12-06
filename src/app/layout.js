@@ -1,7 +1,9 @@
 import { Inter } from "next/font/google";
 import { Orbitron } from "next/font/google";
-import "material-icons/iconfont/material-icons.css";
+import "material-icons/iconfont/material-icons.css"; // https://marella.me/material-icons/demo/
 import "./globals.css";
+import Header from "@/components/Header";
+import Tempmenu from "@/components/Tempmenu";
 
 const inter = Inter({ subsets: ["latin"] });
 const orbitron = Orbitron({ subsets: ["latin"] });
@@ -14,7 +16,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={orbitron.className}>{children}</body>
+      <body className={orbitron.className}>
+        {/* <Header /> */}
+        <Tempmenu />
+        {children}
+      </body>
     </html>
   );
 }
