@@ -4,20 +4,67 @@
 import { useState } from "react";
 import Bandcomponent from "./Bandcomponent";
 
-export default function Program({ bands }) {
+export default function Program({ bands, schedule }) {
   const uniqueGenres = [...new Set(bands.map((band) => band.genre))]; // Completely stole this code, it's hella smart. Set is creating a new array with no duplicate genres.
   console.log(uniqueGenres); //checking wether or not it works
+
+  //   const scheduleData = bands;
+  //   const bandsData = schedule;
+
+  console.log(bands);
+  console.log(schedule);
+  const newBands = bands.map((band) => {
+    for (const stage in schedule) {
+      for (const day in schedule[stage]) {
+        const found = schedule[stage][day].find(
+          (item) => item.act == band.name
+        );
+        if (found) {
+          return {
+            ...band,
+            ...found,
+            day,
+            stage,
+          };
+        }
+      }
+    }
+    return band; // I dont get 60% of this code, credit is Jonas' it works really well.
+  });
+
+  console.log("new band", newBands);
 
   const [genre, setGenre] = useState("All"); // this is the state that will determine what genre we will display
 
   const filteredBands =
-    genre === "All" ? bands : bands.filter((band) => band.genre === genre); // ternary operator that filters the bands based on the selected genre
+    genre === "All"
+      ? newBands
+      : newBands.filter((band) => band.genre === genre); // ternary operator that filters the bands based on the selected genre
 
   const bandComps = filteredBands.map(
     (
       band // maps through the filtered bands and render the components to display for each
-    ) => <Bandcomponent key={band.slug} data={band} />
+    ) => (
+      <Bandcomponent
+        key={band.slug}
+        data={band}
+        isFavorite={favorite.includes(band.name)}
+        toggleFavorite={toggleFavorite}
+      />
+    )
   );
+
+  const [favorite, setFavorite] = useState([]);
+
+  const toggleFavorite = (bandName) => {
+    setFavorite((prevFavorites) => {
+      if (prevFavorites.includes(bandName)) {
+        return prevFavorites.filter((name) => name !== bandName);
+      } else {
+        return [...prevFavorites, bandName];
+      }
+    });
+  };
 
   return (
     <div className="h-screen">

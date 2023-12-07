@@ -1,22 +1,15 @@
 //Bandcomponent.jsx
 
+import { useState, useMemo } from "react";
+
 function getRandomCountry() {
   const countries = ["DK", "US", "UK", "SE", "JP", "NO"];
   const countriesIndex = Math.floor(Math.random() * countries.length);
   return countries[countriesIndex];
 }
-// This is overflødigt since we have access to a schedule that we can fetch via API
-// function getRandomStage() {
-//   const stages = ["Saturn", "Neptun", "Merkur", "Mars", "Julescenen"];
-//   const stagesIndex = Math.floor(Math.random() * stages.length);
-//   return stages[stagesIndex];
-// }
 
 export default function Bandcomponent({ data }) {
-  const randomCountry = getRandomCountry();
-  // const randomStage = getRandomStage();
-  //   console.log(randomCountry);
-  //   console.log(data.genre);
+  const randomCountry = useMemo(() => getRandomCountry(), []); // [] ensures it only runs once (STOLEN)
 
   return (
     <div className="p-2 bg-blue-200">
@@ -24,8 +17,13 @@ export default function Bandcomponent({ data }) {
         {data.name} - {randomCountry}
       </p>
       <p>{data.genre}</p>
+      <p>
+        {data.stage} - {data.day} - {data.start}
+      </p>
 
-      <span class="material-icons icon">favorite_border</span>
+      <button>
+        <span class="material-icons icon">STUFF NEEDS TO GO HERE</span>
+      </button>
     </div>
   );
 }
