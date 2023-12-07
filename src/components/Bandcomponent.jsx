@@ -14,7 +14,7 @@ function getRandomCountry() {
 
 export default function Bandcomponent({ data }) {
   const randomCountry = getRandomCountry();
-  const randomStage = getRandomStage();
+  // const randomStage = getRandomStage();
   //   console.log(randomCountry);
   //   console.log(data.genre);
 
@@ -24,7 +24,7 @@ export default function Bandcomponent({ data }) {
         {data.name} - {randomCountry}
       </p>
       <p>{data.genre}</p>
-      <p>Scene: {randomStage}</p>
+
       <span class="material-icons icon">favorite_border</span>
     </div>
   );
