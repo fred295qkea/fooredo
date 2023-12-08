@@ -11,8 +11,14 @@ function getRandomCountry() {
 export default function Bandcomponent({ data, isFavorite, toggleFavorite }) {
   const randomCountry = useMemo(() => getRandomCountry(), []); // [] ensures it only runs once (STOLEN)
 
+  let backgroundColor = "bg-blue-200";
+
+  if (data.cancelled === true) {
+    backgroundColor = "bg-red-500";
+  }
+
   return (
-    <div className="p-2 bg-blue-200">
+    <div className={`p-2 ${backgroundColor}`}>
       <p>
         {data.name} - {randomCountry}
       </p>
