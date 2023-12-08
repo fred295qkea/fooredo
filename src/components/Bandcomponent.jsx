@@ -8,7 +8,7 @@ function getRandomCountry() {
   return countries[countriesIndex];
 }
 
-export default function Bandcomponent({ data }) {
+export default function Bandcomponent({ data, isFavorite, toggleFavorite }) {
   const randomCountry = useMemo(() => getRandomCountry(), []); // [] ensures it only runs once (STOLEN)
 
   return (
@@ -21,8 +21,12 @@ export default function Bandcomponent({ data }) {
         {data.stage} - {data.day} - {data.start}
       </p>
 
-      <button>
-        <span class="material-icons icon">STUFF NEEDS TO GO HERE</span>
+      <button onClick={() => toggleFavorite(data.name)}>
+        {isFavorite ? (
+          <span className="material-icons icon">favorite</span>
+        ) : (
+          <span className="material-icons icon">favorite_border</span>
+        )}
       </button>
     </div>
   );
