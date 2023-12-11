@@ -3,13 +3,13 @@
 import Program from "@/components/Program";
 
 async function getBands() {
-  const response = await fetch("http://localhost:8080/bands");
+  const response = await fetch(process.env.NEXT_PUBLIC_URL + "bands");
   const data = await response.json();
   return data;
 }
 
 async function getSchedule() {
-  const response = await fetch("http://localhost:8080/schedule");
+  const response = await fetch(process.env.NEXT_PUBLIC_URL + "schedule");
   const data = await response.json();
   return data;
 }
