@@ -1,6 +1,7 @@
 //Bandcomponent.jsx
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
 
 function getRandomCountry() {
   const countries = ["DK", "US", "UK", "SE", "JP", "NO"];
@@ -19,13 +20,17 @@ export default function Bandcomponent({ data, isFavorite, toggleFavorite }) {
 
   return (
     <div className={`p-2 ${backgroundColor}`}>
-      <p>
-        {data.name} - {randomCountry}
-      </p>
-      <p>{data.genre}</p>
-      <p>
-        {data.stage} - {data.day} - {data.start}
-      </p>
+      <Link href={`/bands/[slug]`} as={`/bands/${data.slug}`}>
+        <div>
+          <p>
+            {data.name} - {randomCountry}
+          </p>
+          <p>{data.genre}</p>
+          <p>
+            {data.stage} - {data.day} - {data.start}
+          </p>
+        </div>
+      </Link>
 
       <button onClick={() => toggleFavorite(data.name)}>
         {isFavorite ? (

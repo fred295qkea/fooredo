@@ -10,7 +10,9 @@ export default function Program({ bands, schedule }) {
     // Variable for handeling newBands - a combination of both the /bands endpoint and the /schedule endpoint
     for (const stage in schedule) {
       for (const day in schedule[stage]) {
-        const found = schedule[stage][day].find((item) => item.act == band.name);
+        const found = schedule[stage][day].find(
+          (item) => item.act == band.name
+        );
         if (found) {
           return {
             ...band,
@@ -47,7 +49,9 @@ export default function Program({ bands, schedule }) {
 
   const toggleFavorite = (bandName) => {
     setFavorite((prevFavorites) => {
-      const updatedFavorites = prevFavorites.includes(bandName) ? prevFavorites.filter((name) => name !== bandName) : [...prevFavorites, bandName];
+      const updatedFavorites = prevFavorites.includes(bandName)
+        ? prevFavorites.filter((name) => name !== bandName)
+        : [...prevFavorites, bandName];
 
       // Save the updated favorites to local storage
       localStorage.setItem(lsKey, JSON.stringify(updatedFavorites));
@@ -58,7 +62,13 @@ export default function Program({ bands, schedule }) {
   console.log(favorite);
 
   // OMEGA FILTERING
-  const filteredBands = newBands.filter((band) => (!showFaves || favorite.includes(band.name)) && (genre === "All" || band.genre === genre) && (dayFilter === "All" || band.day === dayFilter) && band.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  const filteredBands = newBands.filter(
+    (band) =>
+      (!showFaves || favorite.includes(band.name)) &&
+      (genre === "All" || band.genre === genre) &&
+      (dayFilter === "All" || band.day === dayFilter) &&
+      band.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const bandComps = filteredBands.map(
     (
@@ -77,7 +87,11 @@ export default function Program({ bands, schedule }) {
     <div className="h-screen">
       <div>
         <label htmlFor="genreFilter">Filter by Genre:</label>
-        <select id="genreFilter" onChange={(e) => setGenre(e.target.value)} value={genre}>
+        <select
+          id="genreFilter"
+          onChange={(e) => setGenre(e.target.value)}
+          value={genre}
+        >
           <option value="All">All Genres</option>
           {uniqueGenres.map((uniqueGenre) => (
             <option value={uniqueGenre} key={uniqueGenre}>
@@ -88,7 +102,11 @@ export default function Program({ bands, schedule }) {
       </div>
       <div>
         <label htmlFor="dayFilter">Filter by Day:</label>
-        <select id="dayFilter" onChange={(e) => setDayFilter(e.target.value)} value={dayFilter}>
+        <select
+          id="dayFilter"
+          onChange={(e) => setDayFilter(e.target.value)}
+          value={dayFilter}
+        >
           <option value="All">All Days</option>
           {uniqueDaysHard.map((uniqueDay) => (
             <option value={uniqueDay} key={uniqueDay}>
@@ -99,13 +117,22 @@ export default function Program({ bands, schedule }) {
       </div>
       <div>
         <label>
-          <input type="checkbox" checked={showFaves} onChange={() => setShowFaves(!showFaves)} />
+          <input
+            type="checkbox"
+            checked={showFaves}
+            onChange={() => setShowFaves(!showFaves)}
+          />
           Show Favorites
         </label>
       </div>
       <div>
         {/* ... (existing code) */}
-        <input type="text" placeholder="Search bands..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+        <input
+          type="text"
+          placeholder="Search bands..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </div>
       <div className="flex flex-col gap-4">
         {filteredBands.length === 0 ? ( // If the filteredBands array is empty, then display a small message for the user
