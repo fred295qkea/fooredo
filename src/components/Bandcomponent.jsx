@@ -1,6 +1,7 @@
 //Bandcomponent.jsx
 
 import { useState, useMemo } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 function getRandomCountry() {
@@ -10,7 +11,14 @@ function getRandomCountry() {
 }
 
 export default function Bandcomponent({ data, isFavorite, toggleFavorite }) {
+  // console.log("bandcomponent data:", data);
   const randomCountry = useMemo(() => getRandomCountry(), []); // [] ensures it only runs once (STOLEN)
+
+  const bandUrl = data.logo;
+  const newBandUrl = bandUrl.startsWith("https://")
+    ? bandUrl
+    : `http://localhost:8080/logos/${bandUrl}`; // new variable for each logo-attribute // this could easily need to be replaced with process.env.NEXT_PUBLIC_URL
+  // console.log(newBandUrl);
 
   let backgroundColor = "bg-blue-200";
 
@@ -19,16 +27,28 @@ export default function Bandcomponent({ data, isFavorite, toggleFavorite }) {
   }
 
   return (
-    <div className={`p-2 ${backgroundColor}`}>
+    <div className={`p-2 flex justify-between  ${backgroundColor}`}>
       <Link href={`/bands/[slug]`} as={`/bands/${data.slug}`}>
-        <div>
-          <p>
-            {data.name} - {randomCountry}
-          </p>
-          <p>{data.genre}</p>
-          <p>
-            {data.stage} - {data.day} - {data.start}
-          </p>
+        <div className="flex gap-4">
+          <div className="grid items-center">
+            <Image
+              className=""
+              src={newBandUrl}
+              alt={`${data.name} logo`}
+              width={100}
+              height={100}
+            />
+          </div>
+
+          <div>
+            <p>
+              {data.name} - {randomCountry}
+            </p>
+            <p>{data.genre}</p>
+            <p>
+              {data.stage} - {data.day} - {data.start}
+            </p>
+          </div>
         </div>
       </Link>
 

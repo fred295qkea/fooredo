@@ -29,6 +29,8 @@ export default function Program({ bands, schedule }) {
   //console.log(newBands);
   //console.log(schedule);
 
+  const logoURL = bands.map((band) => {});
+
   const uniqueGenres = [...new Set(bands.map((band) => band.genre))]; // Completely stole this code, it's hella smart. Set is creating a new array with no duplicate genres.
   const [genre, setGenre] = useState("All"); // this is the state that will determine what genre we will display
 
@@ -127,7 +129,6 @@ export default function Program({ bands, schedule }) {
         </label>
       </div>
       <div>
-        {/* ... (existing code) */}
         <input
           type="text"
           placeholder="Search bands..."
@@ -151,5 +152,11 @@ export default function Program({ bands, schedule }) {
 // http://localhost:8080/schedule
 
 // How to grab cancellations and add that // DONE
-// How to link to a singleview something with slugs and Link tags //
+// How to link to a singleview something with slugs and Link tags // DONE
+
 // sorting after what time they play
+// hydration-error - i think we might need to move up the hardcoded countries and prop them down
+
+// styling af hele sitet
+// styling af program
+// styling af singleview

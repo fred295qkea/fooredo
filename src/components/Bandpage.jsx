@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Tempmenu from "./Tempmenu";
+
 export default function Bandpage({ bandData, scheduleData }) {
   //   console.log(bandData);
   //   console.log(scheduleData);
@@ -32,14 +35,29 @@ export default function Bandpage({ bandData, scheduleData }) {
 
   console.log(fusedData); // log
 
+  const bandUrl = fusedData.logo;
+  const newBandUrl = bandUrl.startsWith("https://")
+    ? bandUrl
+    : `http://localhost:8080/logos/${bandUrl}`; // new variable for each logo-attribute // this could easily need to be replaced with process.env.NEXT_PUBLIC_URL
+  console.log(newBandUrl);
+
   return (
     <div>
-      <p>{fusedData.bio}</p>
-      <p>
-        {fusedData.start} - {fusedData.end}
-      </p>
-      <p>{fusedData.stage}</p>
-      <p>{fusedData.day}</p>
+      <Tempmenu />
+      <div>
+        <Image
+          src={newBandUrl}
+          alt={`${fusedData.name} logo`}
+          width={520}
+          height={400}
+        />
+        <p>{fusedData.bio}</p>
+        <p>
+          {fusedData.start} - {fusedData.end}
+        </p>
+        <p>{fusedData.stage}</p>
+        <p>{fusedData.day}</p>
+      </div>
     </div>
   );
 }
