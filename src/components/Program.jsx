@@ -63,11 +63,12 @@ export default function Program({ bands, schedule }) {
 
   // OMEGA FILTERING
   const filteredBands = newBands.filter(
+    // Using filter() to iterate over the newBands array and apply the conditions below,
     (band) =>
-      (!showFaves || favorite.includes(band.name)) &&
-      (genre === "All" || band.genre === genre) &&
-      (dayFilter === "All" || band.day === dayFilter) &&
-      band.name.toLowerCase().includes(searchTerm.toLowerCase())
+      (!showFaves || favorite.includes(band.name)) && // checking wether the name of a band is included in the favorites-array (IS A FAVORITE)
+      (genre === "All" || band.genre === genre) && // Includes either all genres or only a specific one
+      (dayFilter === "All" || band.day === dayFilter) && // Similar to above only days instead of genre
+      band.name.toLowerCase().includes(searchTerm.toLowerCase()) // this is used for searching, it will try and match a searhTerm to a band name
   );
 
   const bandComps = filteredBands.map(
@@ -75,10 +76,10 @@ export default function Program({ bands, schedule }) {
       band // maps through the filtered bands and render the components to display for each
     ) => (
       <Bandcomponent
-        key={band.slug}
-        data={band}
-        isFavorite={favorite.includes(band.name)} // pass whether the band is a favorite
-        toggleFavorite={toggleFavorite} // pass the toggleFavorite function
+        key={band.slug} // props
+        data={band} // props
+        isFavorite={favorite.includes(band.name)} // props
+        toggleFavorite={toggleFavorite} // props
       />
     )
   );
