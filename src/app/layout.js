@@ -17,8 +17,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={orbitron.className}>
-        {/* <Header /> */}
-        <Tempmenu />
+        <Header />
+        {/* <Tempmenu /> */}
         {children}
       </body>
     </html>
