@@ -5,9 +5,3 @@ export default function Map() {
     </div>
   );
 }
-
-const [genre, setGenre] = useState("All");
-const [favorite, setFavorite] = useState(storedFavorites);
-const [showFaves, setShowFaves] = useState(false);
-const [dayFilter, setDayFilter] = useState("All");
-const [searchTerm, setSearchTerm] = useState("");
