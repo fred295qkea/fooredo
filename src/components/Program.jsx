@@ -26,10 +26,11 @@ export default function Program({ bands, schedule }) {
     }
     return band; // I dont get 60% of this code, credit is Jonas' it works really well.
   });
+  // more code...
   //console.log(newBands);
   //console.log(schedule);
 
-  const logoURL = bands.map((band) => {});
+  // const logoURL = bands.map((band) => {}); // what is this?
 
   const uniqueGenres = [...new Set(bands.map((band) => band.genre))]; // Completely stole this code, it's hella smart. Set is creating a new array with no duplicate genres.
   const [genre, setGenre] = useState("All"); // this is the state that will determine what genre we will display
@@ -88,55 +89,150 @@ export default function Program({ bands, schedule }) {
 
   return (
     <div className="h-screen">
-      <div>
-        <label htmlFor="genreFilter">Filter by Genre:</label>
-        <select
-          id="genreFilter"
-          onChange={(e) => setGenre(e.target.value)}
-          value={genre}
-        >
-          <option value="All">All Genres</option>
-          {uniqueGenres.map((uniqueGenre) => (
-            <option value={uniqueGenre} key={uniqueGenre}>
-              {uniqueGenre}
-            </option>
-          ))}
-        </select>
+      {/* GENRE FILTER */}
+      <div className="m-4">
+        <label htmlFor="genreFilter" className="text-sm font-semibold mb-1">
+          Filter by Genre:
+        </label>
+        <div className="relative">
+          <select
+            id="genreFilter"
+            onChange={(e) => setGenre(e.target.value)}
+            value={genre}
+            className="w-full p-2 border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring focus:border-blue-500 transition duration-300"
+          >
+            <option value="All">All Genres</option>
+            {uniqueGenres.map((uniqueGenre) => (
+              <option value={uniqueGenre} key={uniqueGenre}>
+                {uniqueGenre}
+              </option>
+            ))}
+          </select>
+          <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+            <svg
+              className="w-4 h-4 text-gray-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
-      <div>
-        <label htmlFor="dayFilter">Filter by Day:</label>
-        <select
-          id="dayFilter"
-          onChange={(e) => setDayFilter(e.target.value)}
-          value={dayFilter}
-        >
-          <option value="All">All Days</option>
-          {uniqueDaysHard.map((uniqueDay) => (
-            <option value={uniqueDay} key={uniqueDay}>
-              {uniqueDay}
-            </option>
-          ))}
-        </select>
+      {/* GENRE FILTER END */}
+      {/* GENRE DAY */}
+      <div className="m-4">
+        <label htmlFor="dayFilter" className="block text-sm font-semibold mb-1">
+          Filter by Day:
+        </label>
+        <div className="relative">
+          <select
+            id="dayFilter"
+            onChange={(e) => setDayFilter(e.target.value)}
+            value={dayFilter}
+            className="block w-full p-2 border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring focus:border-blue-500 transition duration-300"
+          >
+            <option value="All">All Days</option>
+            {uniqueDaysHard.map((uniqueDay) => (
+              <option value={uniqueDay} key={uniqueDay}>
+                {uniqueDay}
+              </option>
+            ))}
+          </select>
+          <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+            <svg
+              className="w-4 h-4 text-gray-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
-      <div>
-        <label>
+      {/* GENRE DAY END */}
+      {/* SEARCH BAND */}
+      <div className="m-4">
+        <label
+          htmlFor="bandSearch"
+          className="block text-sm font-semibold mb-1"
+        >
+          Search Bands:
+        </label>
+        <div className="relative">
           <input
-            type="checkbox"
-            checked={showFaves}
-            onChange={() => setShowFaves(!showFaves)}
+            type="text"
+            id="bandSearch"
+            placeholder="E.g. The Beatles"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="block w-full p-2 border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring focus:border-blue-500 transition duration-300"
           />
-          Show Favorites
+          <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+            <svg
+              className="w-4 h-4 text-gray-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-4.35-4.35"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M15 11a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      {/* SEARCH BAND END */}
+      {/* FAVORITES */}
+      <div className="flex mb-4 items-center justify-center">
+        <input
+          type="checkbox"
+          id="showFaves"
+          checked={showFaves}
+          onChange={() => setShowFaves(!showFaves)}
+          className="hidden"
+        />
+        <label
+          htmlFor="showFaves"
+          className="cursor-pointer flex items-center space-x-1 "
+        >
+          <span
+            className={`material-icons ${
+              showFaves ? "text-red-500" : "text-gray-400"
+            }`}
+          >
+            {showFaves ? "favorite" : "favorite_border"}
+          </span>
+          <p>Show Favorites</p>
         </label>
       </div>
-      <div>
-        <input
-          type="text"
-          placeholder="Search bands..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
-      <div className="flex flex-col gap-4">
+      {/* FAVORITES END */}
+
+      <div className="flex flex-col">
         {filteredBands.length === 0 ? ( // If the filteredBands array is empty, then display a small message for the user
           <p>
             No matching bands found <br />

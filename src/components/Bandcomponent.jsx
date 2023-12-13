@@ -27,25 +27,27 @@ export default function Bandcomponent({ data, isFavorite, toggleFavorite }) {
   }
 
   return (
-    <div className={`p-2 flex justify-between  ${backgroundColor}`}>
-      <Link href={`/bands/[slug]`} as={`/bands/${data.slug}`}>
+    <div className={`m-2 py-2 px-3 flex justify-between ${backgroundColor}`}>
+      <Link href={`/bands/${data.slug}`}>
         <div className="flex gap-4">
-          <div className="grid items-center">
+          <div className="flex items-center">
             <Image
-              className=""
               src={newBandUrl}
               alt={`${data.name} logo`}
-              width={100}
-              height={100}
+              width={50}
+              height={50}
+              className="object-cover imgcon"
             />
           </div>
-
           <div>
-            <p>
-              {data.name} - {randomCountry}
-            </p>
-            <p>{data.genre}</p>
-            <p>
+            <div className="">
+              <p className="text-sm font-bold">
+                {data.name}
+                <sup className="text-xs ml-1 font-light">{randomCountry}</sup>
+              </p>
+            </div>
+            <p className="text-sm">{data.genre}</p>
+            <p className="text-xs">
               {data.stage} - {data.day} - {data.start}
             </p>
           </div>

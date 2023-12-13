@@ -1,39 +1,33 @@
 import Image from "next/image";
-import Tempmenu from "./Tempmenu";
 
-export default function Bandpage({ bandData, scheduleData }) {
-  //   console.log(bandData);
-  //   console.log(scheduleData);
+export default function Bandpage({ singleviewData, scheduleData }) {
+  const fuseData = () => {
+    for (const stage in scheduleData) {
+      for (const day in scheduleData[stage]) {
+        const found = scheduleData[stage][day].find(
+          (item) => item.act === singleviewData[0].name
+        );
 
-  const fusedData = { ...bandData, cancelled: false }; // new object COPY
-
-  for (const stage in scheduleData) {
-    // outer loop which loops through each stage in the object
-    const dayAndEvents = Object.entries(scheduleData[stage]).find(
-      // I dont get it, but its something with making [key, value]-pairs from the "day" and "event" which will in turn be checked for a match between band.name and schedule.act
-      ([day, events]) => events.some((event) => event.act === bandData.name) // some() will return true if one element in the array matches the condition which in this case is event.act === bandData.name
-    );
-
-    if (dayAndEvents) {
-      // if a match is found do:
-      const [day, events] = dayAndEvents;
-
-      const matchingEvent = events.find((event) => event.act === bandData.name); // destructuring?
-
-      if (matchingEvent) {
-        // assigning values to fusedData
-        fusedData.day = day;
-        fusedData.stage = stage;
-        fusedData.start = matchingEvent.start;
-        fusedData.end = matchingEvent.end;
-        fusedData.cancelled = matchingEvent.cancelled || false;
+        if (found) {
+          return {
+            ...singleviewData[0],
+            start: found.start,
+            end: found.end,
+            cancelled: found.cancelled || false,
+            stage,
+            day,
+          };
+        }
       }
-
-      break; // break the loop - NO RETURN??????
     }
-  }
 
-  console.log(fusedData); // log
+    // Return a default object if no match is found
+    return {};
+  };
+
+  const fusedData = fuseData();
+
+  console.log("fusedData", fusedData.logo);
 
   const bandUrl = fusedData.logo;
   const newBandUrl = bandUrl.startsWith("https://")
@@ -43,21 +37,7 @@ export default function Bandpage({ bandData, scheduleData }) {
 
   return (
     <div>
-      <Tempmenu />
-      <div>
-        <Image
-          src={newBandUrl}
-          alt={`${fusedData.name} logo`}
-          width={520}
-          height={400}
-        />
-        <p>{fusedData.bio}</p>
-        <p>
-          {fusedData.start} - {fusedData.end}
-        </p>
-        <p>{fusedData.stage}</p>
-        <p>{fusedData.day}</p>
-      </div>
+      <p>fused data something...</p>
     </div>
   );
 }
