@@ -56,7 +56,9 @@ export default function Program({ bands, schedule }) {
         : [...prevFavorites, bandName];
 
       // Save the updated favorites to local storage
-      localStorage.setItem(lsKey, JSON.stringify(updatedFavorites));
+      if (typeof window !== "undefined") {
+        localStorage.setItem(lsKey, JSON.stringify(updatedFavorites));
+      }
 
       return updatedFavorites;
     });
