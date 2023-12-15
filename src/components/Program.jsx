@@ -43,12 +43,11 @@ export default function Program({ bands, schedule }) {
 
   const [favorite, setFavorite] = useState(storedFavorites);
   const [showFaves, setShowFaves] = useState(false);
+  const [dayFilter, setDayFilter] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const uniqueDays = [...new Set(newBands.map((band) => band.day))]; // Completely copied this code from above, it's hella smart. Set is creating a new array with no duplicate days.
   const uniqueDaysHard = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
-  const [dayFilter, setDayFilter] = useState("All");
-
-  const [searchTerm, setSearchTerm] = useState("");
 
   const toggleFavorite = (bandName) => {
     setFavorite((prevFavorites) => {
