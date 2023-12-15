@@ -1,6 +1,6 @@
 //Bandcomponent.jsx
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,19 +14,18 @@ export default function Bandcomponent({ data, isFavorite, toggleFavorite }) {
   // console.log("bandcomponent data:", data);
   // const randomCountry = useMemo(() => getRandomCountry(), []); // [] ensures it only runs once (STOLEN)
 
-  const countries = ["DK", "US", "UK", "SE", "JP", "NO"];
-  const countriesIndex = Math.floor(Math.random() * countries.length);
-  const randomCountry = countries[countriesIndex];
+  // const countries = ["DK", "US", "UK", "SE", "JP", "NO"];
+  // const countriesIndex = Math.floor(Math.random() * countries.length);
+  // const randomCountry = countries[countriesIndex];
 
-  // FIX - but i dont know why >:(
-  // const [randomCountry, setRandomCountry] = useState(null);
-  // useEffect(() => {
-  //   const countries = ["DK", "US", "UK", "SE", "JP", "NO"];
-  //   const countriesIndex = Math.floor(Math.random() * countries.length);
-  //   const selectedCountry = countries[countriesIndex];
+  const [randomCountry, setRandomCountry] = useState(null);
+  useEffect(() => {
+    const countries = ["DK", "US", "UK", "SE", "JP", "NO"];
+    const countriesIndex = Math.floor(Math.random() * countries.length);
+    const selectedCountry = countries[countriesIndex];
 
-  //   setRandomCountry(selectedCountry);
-  // }, []);
+    setRandomCountry(selectedCountry);
+  }, []);
 
   const bandUrl = data.logo;
   const newBandUrl = bandUrl.startsWith("https://")
