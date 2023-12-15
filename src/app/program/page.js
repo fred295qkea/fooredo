@@ -3,8 +3,8 @@
 import Program from "@/components/Program";
 
 async function getBands() {
-  const response = await fetch(process.env.NEXT_PUBLIC_URL + "bands");
-  const data = await response.json();
+  const res = await fetch(process.env.NEXT_PUBLIC_URL + "bands");
+  const data = await res.json();
   return data;
 }
 
