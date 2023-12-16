@@ -50,7 +50,7 @@ export default function Bandpage({ singleviewData, scheduleData }) {
   const bandUrl = fusedData.logo;
   const newBandUrl = bandUrl.startsWith("https://")
     ? bandUrl
-    : `http://localhost:8080/logos/${bandUrl}`; // new variable for each logo-attribute // this could easily need to be replaced with process.env.NEXT_PUBLIC_URL
+    : process.env.NEXT_PUBLIC_URL + "logos/" + bandUrl; // new variable for each logo-attribute // this could easily need to be replaced with process.env.NEXT_PUBLIC_URL
   console.log(newBandUrl);
 
   return (

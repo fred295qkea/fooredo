@@ -16,7 +16,10 @@ export default function Bandcomponent({ data, isFavorite, toggleFavorite }) {
   const bandUrl = data.logo;
   const newBandUrl = bandUrl.startsWith("https://")
     ? bandUrl
-    : `http://localhost:8080/logos/${bandUrl}`; // REPLACE THIS WITH ENVIRONMENT FILE
+    : process.env.NEXT_PUBLIC_URL + "logos/" + bandUrl;
+
+  console.log(newBandUrl);
+
   let backgroundColor = "bg-blue-200";
 
   if (data.cancelled === true) {
