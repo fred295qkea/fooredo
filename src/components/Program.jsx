@@ -26,53 +26,51 @@ export default function Program({ bands, schedule }) {
     }
     return band; // I dont get 60% of this code, credit is Jonas' it works really well.
   });
-  // more code...
-  //console.log(newBands);
-  //console.log(schedule);
-
-  // const logoURL = bands.map((band) => {}); // what is this?
 
   const uniqueGenres = [...new Set(bands.map((band) => band.genre))]; // Completely stole this code, it's hella smart. Set is creating a new array with no duplicate genres.
   const [genre, setGenre] = useState("All"); // this is the state that will determine what genre we will display
 
-  let storedFavorites = [];
+  const uniqueDaysHard = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+  const [dayFilter, setDayFilter] = useState("All");
+
+  const [searchTerm, setSearchTerm] = useState(""); // default value of empty string, this will update onChange of the inputfield - giving new data to the filter logic and re-rendering with said data
+
+  let storedFavorites = []; // line 43 - this empty array is the default value of the favorite state
   const lsKey = "favoriteBands";
   if (typeof window !== "undefined") {
-    storedFavorites = JSON.parse(localStorage.getItem(lsKey)) || [];
+    // tries to run on client side
+    // This will potentially only run the code on client side - since window is only present on client side.
+    storedFavorites = JSON.parse(localStorage.getItem(lsKey)) || []; //
   }
 
   const [favorite, setFavorite] = useState(storedFavorites);
   const [showFaves, setShowFaves] = useState(false);
-  const [dayFilter, setDayFilter] = useState("All");
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const uniqueDays = [...new Set(newBands.map((band) => band.day))]; // Completely copied this code from above, it's hella smart. Set is creating a new array with no duplicate days.
-  const uniqueDaysHard = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
   const toggleFavorite = (bandName) => {
+    // This is passed as props to the Bandcomponent, which in turn defines the value of the bandName parameter - these 2 components are talking back and forth
     setFavorite((prevFavorites) => {
-      const updatedFavorites = prevFavorites.includes(bandName)
-        ? prevFavorites.filter((name) => name !== bandName)
-        : [...prevFavorites, bandName];
+      const updatedFavorites = prevFavorites.includes(bandName) // if the array includes bandName
+        ? prevFavorites.filter((name) => name !== bandName) // removes it with filter
+        : [...prevFavorites, bandName]; // else add it with spread
 
       // Save the updated favorites to local storage
       if (typeof window !== "undefined") {
         localStorage.setItem(lsKey, JSON.stringify(updatedFavorites));
       }
 
-      return updatedFavorites;
+      return updatedFavorites; // this changes the state and will re-render the page accordingly
     });
   };
-  console.log(favorite);
 
   // OMEGA FILTERING
   const filteredBands = newBands.filter(
-    // Using filter() to iterate over the newBands array and apply the conditions below,
+    // Using filter() to iterate over the newBands array and "applying" the conditions below to each band checking if true.
     (band) =>
-      (!showFaves || favorite.includes(band.name)) && // checking wether the name of a band is included in the favorites-array (IS A FAVORITE)
-      (genre === "All" || band.genre === genre) && // Includes either all genres or only a specific one
-      (dayFilter === "All" || band.day === dayFilter) && // Similar to above only days instead of genre
-      band.name.toLowerCase().includes(searchTerm.toLowerCase()) // this is used for searching, it will try and match a searhTerm to a band name
+      // THE GAUNTLET
+      (!showFaves || favorite.includes(band.name)) &&
+      (genre === "All" || band.genre === genre) &&
+      (dayFilter === "All" || band.day === dayFilter) &&
+      band.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const bandComps = filteredBands.map(

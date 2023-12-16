@@ -54,7 +54,7 @@ export default function Bandpage({ singleviewData, scheduleData }) {
   console.log(newBandUrl);
 
   return (
-    <div className="grid gap-4 mx-4 my-8">
+    <div className="grid gap-4 mx-4 my-8 lg:w-2/5 lg:mx-auto">
       <div>
         <h2 className="text-2xl font-bold">
           {fusedData.name}
@@ -71,7 +71,7 @@ export default function Bandpage({ singleviewData, scheduleData }) {
             height={300}
           />
         </div>
-        <div className="flex flex-col ml-4 gap-6">
+        <div className="flex flex-col ml-4 gap-6 lg:flex-row ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="50"

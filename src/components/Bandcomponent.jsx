@@ -4,35 +4,19 @@ import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-// function getRandomCountry() {
-//   const countries = ["DK", "US", "UK", "SE", "JP", "NO"];
-//   const countriesIndex = Math.floor(Math.random() * countries.length);
-//   return countries[countriesIndex];
-// }
-
 export default function Bandcomponent({ data, isFavorite, toggleFavorite }) {
-  // console.log("bandcomponent data:", data);
-  // const randomCountry = useMemo(() => getRandomCountry(), []); // [] ensures it only runs once (STOLEN)
-
-  // const countries = ["DK", "US", "UK", "SE", "JP", "NO"];
-  // const countriesIndex = Math.floor(Math.random() * countries.length);
-  // const randomCountry = countries[countriesIndex];
-
   const [randomCountry, setRandomCountry] = useState(null);
   useEffect(() => {
     const countries = ["DK", "US", "UK", "SE", "JP", "NO"];
     const countriesIndex = Math.floor(Math.random() * countries.length);
     const selectedCountry = countries[countriesIndex];
-
     setRandomCountry(selectedCountry);
   }, []);
 
   const bandUrl = data.logo;
   const newBandUrl = bandUrl.startsWith("https://")
     ? bandUrl
-    : `http://localhost:8080/logos/${bandUrl}`; // new variable for each logo-attribute // this could easily need to be replaced with process.env.NEXT_PUBLIC_URL
-  // console.log(newBandUrl);
-
+    : `http://localhost:8080/logos/${bandUrl}`; // REPLACE THIS WITH ENVIRONMENT FILE
   let backgroundColor = "bg-blue-200";
 
   if (data.cancelled === true) {
