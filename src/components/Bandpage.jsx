@@ -64,7 +64,7 @@ export default function Bandpage({ singleviewData, scheduleData }) {
         </h2>
         <h3 className="text-lg">{fusedData.genre}</h3>
       </div>
-      <div className="flex flex-row gap-8 ">
+      <div className="flex flex-row gap-8 items-center ">
         <div className="flex items-center">
           {isUnsplashUrl ? (
             <Image
@@ -82,12 +82,13 @@ export default function Bandpage({ singleviewData, scheduleData }) {
             />
           )}
         </div>
-        <div className="flex flex-col gap-6 ml-4">
+        <div className="flex flex-col gap-6 ml-4 text-accent ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="50"
             height="50"
             viewBox="0 0 1024 1024"
+            className="hover:text-white cursor-pointer"
           >
             <path
               fill="currentColor"
@@ -99,6 +100,7 @@ export default function Bandpage({ singleviewData, scheduleData }) {
             width="50"
             height="50"
             viewBox="0 0 24 24"
+            className="hover:text-white cursor-pointer"
           >
             <path
               fill="currentColor"
@@ -116,6 +118,7 @@ export default function Bandpage({ singleviewData, scheduleData }) {
             width="50"
             height="50"
             viewBox="0 0 24 24"
+            className="hover:text-white cursor-pointer"
           >
             <path
               fill="currentColor"

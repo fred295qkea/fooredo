@@ -20,7 +20,7 @@ export default function Bandcomponent({ data, isFavorite, toggleFavorite }) {
 
   console.log(newBandUrl);
 
-  let backgroundColor = "bg-blue-200";
+  let backgroundColor = "bg-white";
 
   if (data.cancelled === true) {
     backgroundColor = "bg-red-500";
@@ -66,9 +66,11 @@ export default function Bandcomponent({ data, isFavorite, toggleFavorite }) {
 
       <button onClick={() => toggleFavorite(data.name)}>
         {isFavorite ? (
-          <span className="material-icons icon">favorite</span>
+          <span className="material-icons icon text-accent">favorite</span>
         ) : (
-          <span className="material-icons icon">favorite_border</span>
+          <span className="material-icons icon text-accent">
+            favorite_border
+          </span>
         )}
       </button>
     </div>

@@ -90,7 +90,7 @@ export default function Program({ bands, schedule }) {
   return (
     <div className="pt-24 lg:mx-auto lg:w-2/5">
       {/* GENRE FILTER */}
-      <div className="m-4">
+      <div className="m-4 cursor-pointer">
         <label
           htmlFor="genreFilter"
           className="text-sm font-semibold mb-1 text-white"
@@ -102,7 +102,7 @@ export default function Program({ bands, schedule }) {
             id="genreFilter"
             onChange={(e) => setGenre(e.target.value)}
             value={genre}
-            className="w-full p-2 border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring focus:border-blue-500 transition duration-300"
+            className="w-full p-2 border cursor-pointer focus:cursor-pointer border-gray-300 rounded-md appearance-none focus:outline-none focus:ring focus:border-blue-500 transition duration-300"
           >
             <option value="All">All Genres</option>
             {uniqueGenres.map((uniqueGenre) => (
@@ -143,7 +143,7 @@ export default function Program({ bands, schedule }) {
             id="dayFilter"
             onChange={(e) => setDayFilter(e.target.value)}
             value={dayFilter}
-            className="block w-full p-2 border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring focus:border-blue-500 transition duration-300"
+            className="block w-full p-2 border cursor-pointer focus:cursor-pointer border-gray-300 rounded-md appearance-none focus:outline-none focus:ring focus:border-blue-500 transition duration-300"
           >
             <option value="All">All Days</option>
             {uniqueDaysHard.map((uniqueDay) => (
