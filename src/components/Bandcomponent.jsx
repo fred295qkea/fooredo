@@ -18,7 +18,7 @@ export default function Bandcomponent({ data, isFavorite, toggleFavorite }) {
     ? bandUrl
     : process.env.NEXT_PUBLIC_URL + "logos/" + bandUrl;
 
-  console.log(newBandUrl);
+  // console.log(newBandUrl);
 
   let backgroundColor = "bg-blue-200";
 

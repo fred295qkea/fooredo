@@ -1,7 +1,7 @@
 //Program.jsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Bandcomponent from "./Bandcomponent";
 import Link from "next/link";
 
@@ -35,16 +35,19 @@ export default function Program({ bands, schedule }) {
 
   const [searchTerm, setSearchTerm] = useState(""); // default value of empty string, this will update onChange of the inputfield - giving new data to the filter logic and re-rendering with said data
 
-  let storedFavorites = []; // line 43 - this empty array is the default value of the favorite state
+  const [storedFavorites, setStoredFavorites] = useState([]); // line 43 - this empty array is the default value of the favorite state
   const lsKey = "favoriteBands";
-  if (typeof window !== "undefined") {
+  useEffect(() => {
     // tries to run on client side
     // This will potentially only run the code on client side - since window is only present on client side.
-    storedFavorites = JSON.parse(localStorage.getItem(lsKey)) || []; //
-  }
+    setStoredFavorites(JSON.parse(localStorage.getItem(lsKey)) || []); //
+  }, []);
 
   const [favorite, setFavorite] = useState(storedFavorites);
   const [showFaves, setShowFaves] = useState(false);
+
+  console.log("stored", storedFavorites);
+  console.log("fav", favorite);
 
   const toggleFavorite = (bandName) => {
     // This is passed as props to the Bandcomponent, which in turn defines the value of the bandName parameter - these 2 components are talking back and forth
