@@ -43,11 +43,11 @@ export default function Bandpage({ singleviewData, scheduleData }) {
 
   const fullDayName = dayAbbreviationsToFull[abbreviatedDay] || abbreviatedDay;
 
-  console.log("fusedData", fusedData);
+  // console.log("fusedData", fusedData);
 
   const bandUrl = fusedData.logo;
   const newBandUrl = bandUrl.startsWith("https://") ? bandUrl : process.env.NEXT_PUBLIC_URL + "logos/" + bandUrl; // new variable for each logo-attribute // this could easily need to be replaced with process.env.NEXT_PUBLIC_URL
-  console.log(newBandUrl);
+  //console.log(newBandUrl);
 
   const isUnsplashUrl = newBandUrl.includes("unsplash.com");
 
