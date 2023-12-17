@@ -17,7 +17,11 @@ function CancelledBand(props) {
   }
 
   allActs[2].cancelled = true;
-  console.log(allActs);
+  allActs[3].cancelled = true;
+
+  allActs[4].cancelled = true;
+
+  // console.log(allActs);
 
   const cancelled = allActs.filter((act) => act.cancelled);
 
@@ -36,14 +40,22 @@ function CancelledBand(props) {
                   {item} - {cancelled.length} acts have cancelled
                 </p>
               )}
-              <Accordion.ItemIndicator>{open ? <span className="text-2xl -rotate-90 material-icons icon">arrow_drop_down</span> : <span className="text-2xl material-icons icon">arrow_drop_down</span>}</Accordion.ItemIndicator>
+              <Accordion.ItemIndicator>{open ? <span className="text-2xl -rotate-180 material-icons icon turnArrowUp">arrow_drop_down</span> : <span className="text-2xl material-icons icon turnArrowDown">arrow_drop_down</span>}</Accordion.ItemIndicator>
             </Accordion.ItemTrigger>
             <Accordion.ItemContent>
-              {cancelled.map((act) => {
-                {
-                  return <p className="text-white">{act.act}</p>;
-                }
-              })}
+              <div className="flex flex-row gap-5 accordion">
+                {cancelled.map((act, index) => {
+                  {
+                    return (
+                      <div key={index} className="flex flex-row gap-5 text-white">
+                        <p className="text-white">{act.act} </p>
+
+                        {index !== cancelled.length - 1 && <p>-</p>}
+                      </div>
+                    );
+                  }
+                })}
+              </div>
             </Accordion.ItemContent>
           </Accordion.Item>
         ))}

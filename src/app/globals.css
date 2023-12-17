@@ -15,10 +15,43 @@
   font-size: 17px;
 }
 .text-xxxxs {
-  font-size: 1px;
+  font-size: 10px;
 }
 
 .ellipse {
   padding-bottom: 1rem;
   clip-path: ellipse(0% 0%, 100% 0%, 100% calc(100% - 4rem), 0% 100%);
+}
+
+.turnArrowUp {
+  animation-name: turnup;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+.turnArrowDown {
+  animation-name: turndown;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+@keyframes turnup {
+  from {
+    rotate: 180deg;
+  }
+
+  to {
+    rotate: 0deg;
+  }
+}
+
+@keyframes turndown {
+  from {
+    rotate: -180deg;
+  }
+
+  to {
+    rotate: -0deg;
+  }
 }

@@ -4,6 +4,7 @@ import "material-icons/iconfont/material-icons.css"; // https://marella.me/mater
 import "./globals.css";
 import Header from "@/components/Header";
 import Tempmenu from "@/components/Tempmenu";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 const orbitron = Orbitron({ subsets: ["latin"] });
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
       <body className={orbitron.className}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
