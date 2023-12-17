@@ -41,7 +41,7 @@ function CancelledBand(props) {
               <Accordion.ItemIndicator>{open ? <span className="text-2xl -rotate-180 material-icons accordionIcon turnArrowUp">arrow_drop_down</span> : <span className="text-2xl material-icons accordionIcon turnArrowDown">arrow_drop_down</span>}</Accordion.ItemIndicator>
             </Accordion.ItemTrigger>
             <Accordion.ItemContent>
-              <div className="flex flex-row gap-5 accordion">
+              <div className="flex flex-row flex-wrap gap-5 accordion">
                 {cancelled.map((act, index) => {
                   {
                     return (
