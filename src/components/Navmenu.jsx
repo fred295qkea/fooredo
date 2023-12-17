@@ -13,7 +13,7 @@ export default function Navmenu() {
       <button className="flex " onClick={() => setMenu(!menu)}>
         <span className="p-2 bg-pink-600 rounded-full material-icons icon">menu</span>
       </button>
-      <AnimatePresence mode="wait">{menu && <Burger />}</AnimatePresence>
+      <AnimatePresence mode="wait">{menu && <Burger menu={menu} setMenu={setMenu} />}</AnimatePresence>
     </div>
   );
 }

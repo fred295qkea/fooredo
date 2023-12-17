@@ -14,7 +14,7 @@ async function Cancel() {
   //console.log(schedule);
 
   return (
-    <section className="m-auto  max-w-7xl">
+    <section className="m-auto p-7 max-w-7xl">
       <h3 className="text-2xl text-white">Cancels</h3>
 
       <CancelledBand schedule={schedule} />
