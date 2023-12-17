@@ -12,6 +12,10 @@ sup {
   font-family: var(--font-orbitron);
 }
 
+.errormsg {
+  font-family: var(--font-orbitron);
+}
+
 p {
   font-family: var(--font-open);
 }

@@ -157,7 +157,7 @@ export default function Program({ bands, schedule }) {
 
       <div className="flex flex-col">
         {filteredBands.length === 0 ? ( // If the filteredBands array is empty, then display a small message for the user
-          <p>
+          <p className="text-center text-white ">
             No matching bands found <br />
           </p>
         ) : (

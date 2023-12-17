@@ -20,14 +20,14 @@ export default function Biosection({ bio }) {
       {showFullBio ? (
         <div>
           <p className="text-sm">{bio}</p>
-          <button className="bg-accent p-2 rounded mt-2" onClick={toggleBio}>
+          <button className="p-2 mt-2 rounded bg-accent hover:bg-white hover:outline-2 hover:outline-accent hover:outline hover:text-accent" onClick={toggleBio}>
             Read Less
           </button>
         </div>
       ) : (
         <div>
           <p className="text-sm">{truncatedBio}</p>
-          <button className="bg-accent p-2 rounded mt-2" onClick={toggleBio}>
+          <button className="p-2 mt-2 rounded bg-accent hover:bg-white hover:outline-2 hover:outline-accent hover:outline hover:text-accent" onClick={toggleBio}>
             Read More
           </button>
         </div>
