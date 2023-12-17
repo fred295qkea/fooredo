@@ -18,26 +18,36 @@ export default function Bandcomponent({ data, isFavorite, toggleFavorite }) {
     ? bandUrl
     : process.env.NEXT_PUBLIC_URL + "logos/" + bandUrl;
 
-  // console.log(newBandUrl);
+  console.log(newBandUrl);
 
   let backgroundColor = "bg-blue-200";
 
   if (data.cancelled === true) {
     backgroundColor = "bg-red-500";
   }
+  const isUnsplashUrl = newBandUrl.includes("unsplash.com");
 
   return (
     <div className={`m-2 py-2 px-3 flex justify-between ${backgroundColor}`}>
       <Link href={`/bands/${data.slug}`}>
         <div className="flex gap-4">
           <div className="flex items-center">
-            <Image
-              src={newBandUrl}
-              alt={`${data.name} logo`}
-              width={50}
-              height={50}
-              className="object-cover imgcon"
-            />
+            {isUnsplashUrl ? (
+              <Image
+                src={newBandUrl}
+                alt={`${data.name} logo`}
+                width={50}
+                height={50}
+                className="object-cover imgcon"
+              />
+            ) : (
+              <img
+                src={newBandUrl}
+                alt={`${data.name} logo`}
+                className="object-cover imgcon"
+                style={{ width: 50, height: 50 }}
+              />
+            )}
           </div>
           <div>
             <div className="">

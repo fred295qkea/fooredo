@@ -53,6 +53,8 @@ export default function Bandpage({ singleviewData, scheduleData }) {
     : process.env.NEXT_PUBLIC_URL + "logos/" + bandUrl; // new variable for each logo-attribute // this could easily need to be replaced with process.env.NEXT_PUBLIC_URL
   console.log(newBandUrl);
 
+  const isUnsplashUrl = newBandUrl.includes("unsplash.com");
+
   return (
     <div className="grid gap-4 mx-4 my-8 lg:w-2/5 lg:mx-auto">
       <div>
@@ -63,13 +65,22 @@ export default function Bandpage({ singleviewData, scheduleData }) {
         <h3 className="text-lg">{fusedData.genre}</h3>
       </div>
       <div className="flex flex-row items-center">
-        <div>
-          <Image
-            src={newBandUrl}
-            alt={`${fusedData.name} logo`}
-            width={300}
-            height={300}
-          />
+        <div className="flex items-center">
+          {isUnsplashUrl ? (
+            <Image
+              src={newBandUrl}
+              alt={`${fusedData.name} logo`}
+              width={300}
+              height={300}
+              className="object-cover imgcon"
+            />
+          ) : (
+            <img
+              src={newBandUrl}
+              alt={`${fusedData.name} logo`}
+              className="object-cover"
+            />
+          )}
         </div>
         <div className="flex flex-col ml-4 gap-6 lg:flex-row ">
           <svg

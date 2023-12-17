@@ -47,8 +47,6 @@ export default function Program({ bands, schedule }) {
 
   const [showFaves, setShowFaves] = useState(false);
 
-  console.log("fav", favorite);
-
   const toggleFavorite = (bandName) => {
     // This is passed as props to the Bandcomponent, which in turn defines the value of the bandName parameter - these 2 components are talking back and forth
     setFavorite((prevFavorites) => {
