@@ -8,7 +8,7 @@ function Downloader() {
   const fileURL = "/map.png";
 
   return (
-    <button onClick={() => download(fileURL, fileName)} className="p-2 text-center text-white w-fit bg-accent">
+    <button onClick={() => download(fileURL, fileName)} className="p-2 text-center text-white w-fit bg-accent hover:bg-white hover:outline-2 hover:outline-accent hover:outline hover:text-accent">
       Download map
     </button>
   );

@@ -16,11 +16,6 @@ function CancelledBand(props) {
     }
   }
 
-  allActs[2].cancelled = true;
-  allActs[3].cancelled = true;
-
-  allActs[4].cancelled = true;
-
   // console.log(allActs);
 
   const cancelled = allActs.filter((act) => act.cancelled);
