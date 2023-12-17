@@ -1,13 +1,12 @@
-import { Inter } from "next/font/google";
-import { Orbitron } from "next/font/google";
 import "material-icons/iconfont/material-icons.css"; // https://marella.me/material-icons/demo/
 import "./globals.css";
 import Header from "@/components/Header";
 import Tempmenu from "@/components/Tempmenu";
 import Footer from "@/components/Footer";
+import { Orbitron, Open_Sans } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
-const orbitron = Orbitron({ subsets: ["latin"] });
+const open_sans = Open_Sans({ subsets: ["latin"], variable: "--font-open" });
+const orbitron = Orbitron({ subsets: ["latin"], variable: "--font-orbitron" });
 
 export const metadata = {
   title: "Create Next App",
@@ -16,7 +15,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className=" bg-mainBG">
+    <html lang="en" className={`bg-mainBG ${orbitron.variable} ${open_sans.variable}`}>
       <body>
         <Header />
         {children}
