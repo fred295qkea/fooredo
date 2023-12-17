@@ -35,18 +35,18 @@ export default function Program({ bands, schedule }) {
 
   const [searchTerm, setSearchTerm] = useState(""); // default value of empty string, this will update onChange of the inputfield - giving new data to the filter logic and re-rendering with said data
 
-  const [storedFavorites, setStoredFavorites] = useState([]); // line 43 - this empty array is the default value of the favorite state
+  //const [storedFavorites, setStoredFavorites] = useState([]); // line 43 - this empty array is the default value of the favorite state
+  const [favorite, setFavorite] = useState([]);
   const lsKey = "favoriteBands";
   useEffect(() => {
     // tries to run on client side
     // This will potentially only run the code on client side - since window is only present on client side.
-    setStoredFavorites(JSON.parse(localStorage.getItem(lsKey)) || []); //
+    const storage = localStorage.getItem(lsKey);
+    setFavorite(storage ? JSON.parse(storage) : []); //
   }, []);
 
-  const [favorite, setFavorite] = useState(storedFavorites);
   const [showFaves, setShowFaves] = useState(false);
 
-  console.log("stored", storedFavorites);
   console.log("fav", favorite);
 
   const toggleFavorite = (bandName) => {
