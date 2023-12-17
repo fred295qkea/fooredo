@@ -87,10 +87,13 @@ export default function Program({ bands, schedule }) {
   );
 
   return (
-    <div className="h-screen lg:mx-auto lg:w-2/5">
+    <div className="h-screen pt-24 lg:mx-auto lg:w-2/5">
       {/* GENRE FILTER */}
       <div className="m-4">
-        <label htmlFor="genreFilter" className="text-sm font-semibold mb-1">
+        <label
+          htmlFor="genreFilter"
+          className="text-sm font-semibold mb-1 text-white"
+        >
           Filter by Genre:
         </label>
         <div className="relative">
@@ -128,7 +131,10 @@ export default function Program({ bands, schedule }) {
       {/* GENRE FILTER END */}
       {/* GENRE DAY */}
       <div className="m-4">
-        <label htmlFor="dayFilter" className="block text-sm font-semibold mb-1">
+        <label
+          htmlFor="dayFilter"
+          className="block text-sm font-semibold mb-1 text-white"
+        >
           Filter by Day:
         </label>
         <div className="relative">
@@ -168,7 +174,7 @@ export default function Program({ bands, schedule }) {
       <div className="m-4">
         <label
           htmlFor="bandSearch"
-          className="block text-sm font-semibold mb-1"
+          className="block text-sm font-semibold mb-1 text-white"
         >
           Search Bands:
         </label>
@@ -217,11 +223,11 @@ export default function Program({ bands, schedule }) {
         />
         <label
           htmlFor="showFaves"
-          className="cursor-pointer flex items-center space-x-1 "
+          className="cursor-pointer flex items-center space-x-1 text-white"
         >
           <span
             className={`material-icons ${
-              showFaves ? "text-red-500" : "text-gray-400"
+              showFaves ? "text-red-500" : "text-white"
             }`}
           >
             {showFaves ? "favorite" : "favorite_border"}
