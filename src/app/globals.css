@@ -5,3 +5,8 @@
 .icon {
   font-size: 2.5rem;
 }
+
+.ellipse {
+  padding-bottom: 1rem;
+  clip-path: ellipse(0% 0%, 100% 0%, 100% calc(100% - 4rem), 0% 100%);
+}
