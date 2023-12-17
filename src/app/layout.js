@@ -15,10 +15,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className=" bg-mainBG">
       <body className={orbitron.className}>
         <Header />
-        {/* <Tempmenu /> */}
         {children}
       </body>
     </html>

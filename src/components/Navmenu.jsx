@@ -9,9 +9,9 @@ import { AnimatePresence } from "framer-motion";
 export default function Navmenu() {
   const [menu, setMenu] = useState(false);
   return (
-    <div className="fixed z-[2] flex items-center justify-center w-10 h-10 top-3 right-3 ">
+    <div className=" z-[2] flex items-center justify-center w-10 h-10">
       <button className="flex " onClick={() => setMenu(!menu)}>
-        <span class="material-icons icon bg-pink-600 rounded-full p-2">menu</span>
+        <span className="p-2 bg-pink-600 rounded-full material-icons icon">menu</span>
       </button>
       <AnimatePresence mode="wait">{menu && <Burger />}</AnimatePresence>
     </div>
