@@ -27,20 +27,18 @@ function CancelledBand(props) {
 
   return (
     <div className="text-white">
-      {cancelled.length == 0 && <p className="text-2xl text-white">Alle acts er klar til at spille</p>}
-
       <Accordion.Root defaultValue={["React"]} collapsible>
         {["Cancelations"].map((item, id) => (
           <Accordion.Item key={id} value={item}>
             <Accordion.ItemTrigger onClick={() => setOpen(!open)} className="flex justify-between w-full border-b-2 border-white border-solid">
               {cancelled.length == 0 ? (
-                <p>{item} - Alle acts er klar til at performe!</p>
+                <h3 className="text-2xl">{item} - Alle acts er klar til at performe!</h3>
               ) : (
-                <p>
+                <h3 className="mb-2 text-2xl">
                   {item} - {cancelled.length} acts have cancelled
-                </p>
+                </h3>
               )}
-              <Accordion.ItemIndicator>{open ? <span className="text-2xl -rotate-180 material-icons icon turnArrowUp">arrow_drop_down</span> : <span className="text-2xl material-icons icon turnArrowDown">arrow_drop_down</span>}</Accordion.ItemIndicator>
+              <Accordion.ItemIndicator>{open ? <span className="text-2xl -rotate-180 material-icons accordionIcon turnArrowUp">arrow_drop_down</span> : <span className="text-2xl material-icons accordionIcon turnArrowDown">arrow_drop_down</span>}</Accordion.ItemIndicator>
             </Accordion.ItemTrigger>
             <Accordion.ItemContent>
               <div className="flex flex-row gap-5 accordion">

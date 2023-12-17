@@ -2,8 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Orbitron&display=swap");
+
+h1,
+h2,
+h3,
+h4,
+h5,
+a {
+  font-family: "Orbitron", sans-serif;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+}
+
 .icon {
   font-size: 1.5rem;
+}
+
+.accordionIcon {
+  font-size: 3rem;
 }
 
 .imgcon {
@@ -25,13 +44,13 @@
 
 .turnArrowUp {
   animation-name: turnup;
-  animation-duration: 0.3s;
+  animation-duration: 0.2s;
   animation-iteration-count: 1;
   animation-timing-function: linear;
 }
 .turnArrowDown {
   animation-name: turndown;
-  animation-duration: 0.3s;
+  animation-duration: 0.2s;
   animation-iteration-count: 1;
   animation-timing-function: linear;
 }

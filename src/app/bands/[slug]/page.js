@@ -2,6 +2,20 @@
 import { notFound } from "next/navigation";
 import Bandpage from "@/components/Bandpage";
 
+export async function generateMetadata({ params }) {
+  const res = await fetch(process.env.NEXT_PUBLIC_URL + "bands");
+  const titleData = await res.json();
+  const documentName = titleData.filter((titles) => titles.slug === params.slug);
+
+  // console.log("params slug", params.slug);
+  // console.log("titledata: ", documentName);
+
+  return {
+    title: documentName[0].name,
+    description: `Singleview page for ${documentName[0].name}`,
+  };
+}
+
 // export async function getBands() {
 //   console.log("TJEKKET", params);
 //   const response = await fetch(process.env.NEXT_PUBLIC_URL + "bands");
@@ -31,7 +45,7 @@ export default async function Singleview({ params }) {
   const data = await fetch(process.env.NEXT_PUBLIC_URL + "bands");
   const bandData = await data.json();
   const singleviewData = bandData.filter((bd) => bd.slug === params.slug);
-  //console.log("band", singleviewData);
+  console.log("band", singleviewData);
 
   return (
     <main>

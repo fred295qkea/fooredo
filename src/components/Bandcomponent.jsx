@@ -14,11 +14,9 @@ export default function Bandcomponent({ data, isFavorite, toggleFavorite }) {
   }, []);
 
   const bandUrl = data.logo;
-  const newBandUrl = bandUrl.startsWith("https://")
-    ? bandUrl
-    : process.env.NEXT_PUBLIC_URL + "logos/" + bandUrl;
+  const newBandUrl = bandUrl.startsWith("https://") ? bandUrl : process.env.NEXT_PUBLIC_URL + "logos/" + bandUrl;
 
-  console.log(newBandUrl);
+  //  console.log(newBandUrl);
 
   let backgroundColor = "bg-white";
 
@@ -31,29 +29,12 @@ export default function Bandcomponent({ data, isFavorite, toggleFavorite }) {
     <div className={`m-2 py-2 px-3 flex justify-between ${backgroundColor}`}>
       <Link href={`/bands/${data.slug}`}>
         <div className="flex gap-4">
-          <div className="flex items-center">
-            {isUnsplashUrl ? (
-              <Image
-                src={newBandUrl}
-                alt={`${data.name} logo`}
-                width={50}
-                height={50}
-                className="object-cover imgcon"
-              />
-            ) : (
-              <img
-                src={newBandUrl}
-                alt={`${data.name} logo`}
-                className="object-cover imgcon"
-                style={{ width: 50, height: 50 }}
-              />
-            )}
-          </div>
+          <div className="flex items-center">{isUnsplashUrl ? <Image src={newBandUrl} alt={`${data.name} logo`} width={50} height={50} className="object-cover imgcon" /> : <img src={newBandUrl} alt={`${data.name} logo`} className="object-cover imgcon" style={{ width: 50, height: 50 }} />}</div>
           <div>
             <div className="">
               <p className="text-sm font-bold">
                 {data.name}
-                <sup className="text-xs ml-1 font-light">{randomCountry}</sup>
+                <sup className="ml-1 text-xs font-light">{randomCountry}</sup>
               </p>
             </div>
             <p className="text-sm">{data.genre}</p>
@@ -64,15 +45,7 @@ export default function Bandcomponent({ data, isFavorite, toggleFavorite }) {
         </div>
       </Link>
 
-      <button onClick={() => toggleFavorite(data.name)}>
-        {isFavorite ? (
-          <span className="material-icons icon text-accent">favorite</span>
-        ) : (
-          <span className="material-icons icon text-accent">
-            favorite_border
-          </span>
-        )}
-      </button>
+      <button onClick={() => toggleFavorite(data.name)}>{isFavorite ? <span className="material-icons icon text-accent">favorite</span> : <span className="material-icons icon text-accent">favorite_border</span>}</button>
     </div>
   );
 }

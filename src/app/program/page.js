@@ -2,6 +2,11 @@
 
 import Program from "@/components/Program";
 
+export const metadata = {
+  title: "Program",
+  description: "Program page for Foo festival",
+};
+
 async function getBands() {
   const res = await fetch(process.env.NEXT_PUBLIC_URL + "bands");
   const data = await res.json();

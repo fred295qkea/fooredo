@@ -1,11 +1,13 @@
-import Burger from "@/components/Burger";
 import Frontpage from "@/components/Frontpage";
-import Header from "@/components/Header";
-import Image from "next/image";
+
+export const metadata = {
+  title: "Foo Festival",
+  description: "Homepage for Foo Festival",
+};
 
 export default function Home() {
   return (
-    <main className="">
+    <main className="pt-20 lg:pt-0">
       <Frontpage />
     </main>
   );
