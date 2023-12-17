@@ -34,8 +34,8 @@ export default async function Singleview({ params }) {
   //console.log("band", singleviewData);
 
   return (
-    <div>
+    <main>
       <Bandpage singleviewData={singleviewData} scheduleData={scheduleData} />
-    </div>
+    </main>
   );
 }

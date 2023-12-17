@@ -23,7 +23,7 @@ export default function Burger(props) {
   ];
 
   return (
-    <motion.div variants={menuSlide} animate="enter" exit="exit" initial="initial" className="fixed top-0 right-0 z-[-1] h-[100vh] bg-blue-500 w-80 p-10 my-auto flex  ">
+    <motion.div variants={menuSlide} animate="enter" exit="exit" initial="initial" className="fixed top-0 right-0 z-[-1] h-[100vh] bg-blue-500 w-full lg:w-80 p-10 my-auto flex  ">
       <ul className="flex flex-col justify-center gap-10">
         {navs.map((item) => {
           return (

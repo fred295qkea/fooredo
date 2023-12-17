@@ -88,7 +88,7 @@ export default function Program({ bands, schedule }) {
   );
 
   return (
-    <div className="h-screen pt-24 lg:mx-auto lg:w-2/5">
+    <div className="pt-24 lg:mx-auto lg:w-2/5">
       {/* GENRE FILTER */}
       <div className="m-4">
         <label
