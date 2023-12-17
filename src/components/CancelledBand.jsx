@@ -40,7 +40,7 @@ function CancelledBand(props) {
                 {cancelled.map((act, index) => {
                   {
                     return (
-                      <div key={index} className="flex flex-row gap-5 text-white">
+                      <div key={index} className="flex flex-row gap-2 text-white lg:gap-5">
                         <p className="text-white">{act.act} </p>
 
                         {index !== cancelled.length - 1 && <p>-</p>}
