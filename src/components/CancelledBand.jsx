@@ -23,7 +23,7 @@ function CancelledBand(props) {
   return (
     <div className="text-white">
       <Accordion.Root defaultValue={["React"]} collapsible>
-        {["Cancelations"].map((item, id) => (
+        {["Cancellations"].map((item, id) => (
           <Accordion.Item key={id} value={item}>
             <Accordion.ItemTrigger onClick={() => setOpen(!open)} className="flex justify-between w-full border-b-2 border-white border-solid">
               {cancelled.length == 0 ? (

@@ -10,9 +10,7 @@ export default function Program({ bands, schedule }) {
     // Variable for handeling newBands - a combination of both the /bands endpoint and the /schedule endpoint
     for (const stage in schedule) {
       for (const day in schedule[stage]) {
-        const found = schedule[stage][day].find(
-          (item) => item.act == band.name
-        );
+        const found = schedule[stage][day].find((item) => item.act == band.name);
         if (found) {
           return {
             ...band,
@@ -68,10 +66,7 @@ export default function Program({ bands, schedule }) {
     // Using filter() to iterate over the newBands array and "applying" the conditions below to each band checking if true.
     (band) =>
       // THE GAUNTLET
-      (!showFaves || favorite.includes(band.name)) &&
-      (genre === "All" || band.genre === genre) &&
-      (dayFilter === "All" || band.day === dayFilter) &&
-      band.name.toLowerCase().includes(searchTerm.toLowerCase())
+      (!showFaves || favorite.includes(band.name)) && (genre === "All" || band.genre === genre) && (dayFilter === "All" || band.day === dayFilter) && band.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const bandComps = filteredBands.map(
@@ -88,22 +83,15 @@ export default function Program({ bands, schedule }) {
   );
 
   return (
-    <div className="pt-24 lg:mx-auto lg:w-2/5">
+    <section className="pt-24 lg:mx-auto lg:w-2/5">
+      <h1 className="text-2xl text-center text-white lg:text-4xl">Program</h1>
       {/* GENRE FILTER */}
       <div className="m-4 cursor-pointer">
-        <label
-          htmlFor="genreFilter"
-          className="text-sm font-semibold mb-1 text-white"
-        >
+        <label htmlFor="genreFilter" className="mb-1 text-sm font-semibold text-white">
           Filter by Genre:
         </label>
         <div className="relative">
-          <select
-            id="genreFilter"
-            onChange={(e) => setGenre(e.target.value)}
-            value={genre}
-            className="w-full p-2 border cursor-pointer focus:cursor-pointer border-gray-300 rounded-md appearance-none focus:outline-none focus:ring focus:border-blue-500 transition duration-300"
-          >
+          <select id="genreFilter" onChange={(e) => setGenre(e.target.value)} value={genre} className="w-full p-2 transition duration-300 border border-gray-300 rounded-md appearance-none cursor-pointer focus:cursor-pointer focus:outline-none focus:ring focus:border-blue-500">
             <option value="All">All Genres</option>
             {uniqueGenres.map((uniqueGenre) => (
               <option value={uniqueGenre} key={uniqueGenre}>
@@ -112,19 +100,8 @@ export default function Program({ bands, schedule }) {
             ))}
           </select>
           <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-            <svg
-              className="w-4 h-4 text-gray-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M19 9l-7 7-7-7"
-              />
+            <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
             </svg>
           </div>
         </div>
@@ -132,19 +109,11 @@ export default function Program({ bands, schedule }) {
       {/* GENRE FILTER END */}
       {/* GENRE DAY */}
       <div className="m-4">
-        <label
-          htmlFor="dayFilter"
-          className="block text-sm font-semibold mb-1 text-white"
-        >
+        <label htmlFor="dayFilter" className="block mb-1 text-sm font-semibold text-white">
           Filter by Day:
         </label>
         <div className="relative">
-          <select
-            id="dayFilter"
-            onChange={(e) => setDayFilter(e.target.value)}
-            value={dayFilter}
-            className="block w-full p-2 border cursor-pointer focus:cursor-pointer border-gray-300 rounded-md appearance-none focus:outline-none focus:ring focus:border-blue-500 transition duration-300"
-          >
+          <select id="dayFilter" onChange={(e) => setDayFilter(e.target.value)} value={dayFilter} className="block w-full p-2 transition duration-300 border border-gray-300 rounded-md appearance-none cursor-pointer focus:cursor-pointer focus:outline-none focus:ring focus:border-blue-500">
             <option value="All">All Days</option>
             {uniqueDaysHard.map((uniqueDay) => (
               <option value={uniqueDay} key={uniqueDay}>
@@ -153,19 +122,8 @@ export default function Program({ bands, schedule }) {
             ))}
           </select>
           <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-            <svg
-              className="w-4 h-4 text-gray-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M19 9l-7 7-7-7"
-              />
+            <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
             </svg>
           </div>
         </div>
@@ -173,66 +131,25 @@ export default function Program({ bands, schedule }) {
       {/* GENRE DAY END */}
       {/* SEARCH BAND */}
       <div className="m-4">
-        <label
-          htmlFor="bandSearch"
-          className="block text-sm font-semibold mb-1 text-white"
-        >
+        <label htmlFor="bandSearch" className="block mb-1 text-sm font-semibold text-white">
           Search Bands:
         </label>
         <div className="relative">
-          <input
-            type="text"
-            id="bandSearch"
-            placeholder="E.g. The Beatles"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="block w-full p-2 border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring focus:border-blue-500 transition duration-300"
-          />
+          <input type="text" id="bandSearch" placeholder="E.g. The Beatles" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="block w-full p-2 transition duration-300 border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring focus:border-blue-500" />
           <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-            <svg
-              className="w-4 h-4 text-gray-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M21 21l-4.35-4.35"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15 11a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"
-              />
+            <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-4.35-4.35" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a4 4 0 1 1-8 0 4 4 0 0 1 8 0z" />
             </svg>
           </div>
         </div>
       </div>
       {/* SEARCH BAND END */}
       {/* FAVORITES */}
-      <div className="flex mb-4 items-center justify-center">
-        <input
-          type="checkbox"
-          id="showFaves"
-          checked={showFaves}
-          onChange={() => setShowFaves(!showFaves)}
-          className="hidden"
-        />
-        <label
-          htmlFor="showFaves"
-          className="cursor-pointer flex items-center space-x-1 text-white"
-        >
-          <span
-            className={`material-icons ${
-              showFaves ? "text-red-500" : "text-white"
-            }`}
-          >
-            {showFaves ? "favorite" : "favorite_border"}
-          </span>
+      <div className="flex items-center justify-center mb-4">
+        <input type="checkbox" id="showFaves" checked={showFaves} onChange={() => setShowFaves(!showFaves)} className="hidden" />
+        <label htmlFor="showFaves" className="flex items-center space-x-1 text-white cursor-pointer">
+          <span className={`material-icons ${showFaves ? "text-red-500" : "text-white"}`}>{showFaves ? "favorite" : "favorite_border"}</span>
           <p>Show Favorites</p>
         </label>
       </div>
@@ -247,7 +164,7 @@ export default function Program({ bands, schedule }) {
           bandComps
         )}
       </div>
-    </div>
+    </section>
   );
 }
 

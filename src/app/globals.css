@@ -2,14 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Orbitron&display=swap");
-
 h1,
 h2,
 h3,
 h4,
 h5,
-a {
+a,
+sup {
   font-family: var(--font-orbitron);
 }
 

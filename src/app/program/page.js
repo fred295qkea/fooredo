@@ -27,8 +27,8 @@ export default async function Bandspage() {
   // console.log(bands);
   // Here i return a component with the data i fecthed as props
   return (
-    <div>
+    <main>
       <Program bands={bands} schedule={schedule} />;
-    </div>
+    </main>
   );
 }
