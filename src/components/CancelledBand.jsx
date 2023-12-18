@@ -27,7 +27,7 @@ function CancelledBand(props) {
           <Accordion.Item key={id} value={item}>
             <Accordion.ItemTrigger onClick={() => setOpen(!open)} className="flex justify-between w-full border-b-2 border-white border-solid">
               {cancelled.length == 0 ? (
-                <h3 className="text-2xl">{item} - Alle acts er klar til at performe!</h3>
+                <h3 className="text-2xl">{item} - All acts are ready to perform!</h3>
               ) : (
                 <h3 className="mb-2 text-2xl">
                   {item} - {cancelled.length} acts have cancelled
