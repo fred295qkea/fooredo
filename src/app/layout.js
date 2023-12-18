@@ -1,7 +1,6 @@
 import "material-icons/iconfont/material-icons.css"; // https://marella.me/material-icons/demo/
 import "./globals.css";
 import Header from "@/components/Header";
-import Tempmenu from "@/components/Tempmenu";
 import Footer from "@/components/Footer";
 import { Orbitron, Open_Sans } from "next/font/google";
 
