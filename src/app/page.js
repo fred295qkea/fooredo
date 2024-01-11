@@ -1,4 +1,5 @@
 import Frontpage from "@/components/Frontpage";
+import Blog from "@/components/Blog";
 
 export const metadata = {
   title: "Foo Festival",

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Hero from "./Hero";
 import Cancel from "./Cancel";
 import Live from "./Live";
+import Blog from "./Blog";
 
 async function getCancel() {
   const response = await fetch(process.env.NEXT_PUBLIC_URL + "schedule");
@@ -15,6 +16,7 @@ export default function Frontpage() {
       <Hero />
       <Live scheduleData={getCancel} />
       <Cancel scheduleData={getCancel} />
+      <Blog />
     </div>
   );
 }
