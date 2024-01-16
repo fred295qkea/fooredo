@@ -27,7 +27,7 @@ export default async function Bandspage() {
   // console.log(bands);
   // Here i return a component with the data i fecthed as props
   return (
-    <main>
+    <main className="min-h-screen">
       <Program bands={bands} schedule={schedule} />;
     </main>
   );

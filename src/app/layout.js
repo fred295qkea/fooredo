@@ -10,7 +10,7 @@ const orbitron = Orbitron({ subsets: ["latin"], variable: "--font-orbitron" });
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`bg-mainBG ${orbitron.variable} ${open_sans.variable}`}>
-      <body>
+      <body className="">
         <Header />
         {children}
         <Footer />

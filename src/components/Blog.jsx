@@ -1,7 +1,7 @@
-import { data } from "autoprefixer";
 import { performRequest } from "lib/datocms";
 import { draftMode } from "next/headers";
 import Image from "next/image";
+import Link from "next/link";
 
 const PAGE_CONTENT_QUERY = `
 
@@ -39,15 +39,17 @@ export default async function Blog() {
   console.log("blogs:", blogs);
 
   return (
-    <section>
+    <section className="grid grid-cols-2 m-auto lg:grid-cols-3 max-w-7xl">
       {blogs.map((blog) => {
         return (
-          <article key={blog.id}>
-            <Image src={blog.blogImage.url} alt="Blog image" width={100} height={100} sizes="50vw" />
-            <div>
-              <h3>{blog.geadline}</h3>
-              <p>{blog.description}</p>
-            </div>
+          <article className="flex flex-col gap-4 m-3 border-2 rounded-md first:col-span-2 first:row-span-2" key={blog.id}>
+            <Link href={`/blogs/${blog.id}`}>
+              <Image className="w-full rounded-md " src={blog.blogImage.url} alt="Blog image" width={400} height={400} sizes="50vw" />
+              <div className="flex flex-col p-3">
+                <h3 className="text-white first:text-xl ">{blog.headline}</h3>
+                <p className="text-sm text-white first:text-lg">{blog.description} </p>
+              </div>
+            </Link>
           </article>
         );
       })}

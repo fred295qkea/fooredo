@@ -48,7 +48,7 @@ export default async function Singleview({ params }) {
   console.log("band", singleviewData);
 
   return (
-    <main>
+    <main className="min-h-screen ">
       <Bandpage singleviewData={singleviewData} scheduleData={scheduleData} />
     </main>
   );
