@@ -5,7 +5,7 @@ export default function Map() {
   return (
     <section className="pt-20 text-white">
       <h1 className="text-3xl text-center my-7">Map</h1>
-      <p className="mx-10 text-center">Having trouble finding finding your way around? download the map!</p>
+      <p className="mx-10 text-center">Having trouble finding your way around? download the map!</p>
       <div className="p-5 m-auto my-2 border-2 border-solid rounded-xl border-accent max-w-7xl">
         <Image src={"/map.png"} height={900} width={1600} sizes="100wv" alt="Map of festival"></Image>
       </div>
