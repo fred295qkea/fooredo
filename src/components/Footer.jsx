@@ -6,7 +6,7 @@ function Footer() {
       <div className="flex flex-col gap-2">
         <p>@2024 FooFestival</p>
         <p>Location @ Space</p>
-        <Link href="https://foo-festival-topaz.vercel.app/" target="_blank" className="underline">
+        <Link href="https://foo-festival-booking.vercel.app/" target="_blank" className="underline">
           Get tickets!
         </Link>
       </div>
